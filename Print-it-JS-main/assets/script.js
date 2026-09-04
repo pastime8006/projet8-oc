@@ -19,10 +19,24 @@ const slides = [
     },
   ];
 
-  let imageActive = 0;
+function updateImage() {
+  image.setAttribute("src", slides[imageActive].image);
+  tagline.innerHTML = slides[imageActive].tagline;
 
+  // Mise à jour des dots
+  dots.forEach((dot, index) => {
+    if (index === imageActive) {
+      dot.classList.add('dot_selected');
+    } else {
+      dot.classList.remove('dot_selected');
+    }
+  });
+}
+
+  let imageActive = 0;
   let image = document.querySelector("#slider .slider-img");
-   tagline = document.querySelector("#slider .tagline");
+  let tagline = document.querySelector("#slider .tagline");
+  let dots = document.querySelectorAll('.dots .dot');
 
   updateImage();
 
@@ -40,7 +54,14 @@ const slides = [
     updateImage();
   });
 
-  function updateImage() {
-    image.setAttribute("src", slides[imageActive].image);
-    tagline.innerHTML = slides[imageActive].tagline;
-  }
+
+dots.forEach((dot, index) =>{
+  dot.addEventListener('click', () => {
+    imageActive = index;
+    updateImage();
+  })
+})
+
+// Initialisation
+updateImage();
+
