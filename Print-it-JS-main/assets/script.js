@@ -37,7 +37,6 @@ function updateImage() {
   let image = document.querySelector("#slider .slider-img");
   let tagline = document.querySelector("#slider .tagline");
   let dots = document.querySelectorAll('.dots .dot');
-
   updateImage();
 
   const arrowRight = document.querySelector("#slider .arrow-right");
